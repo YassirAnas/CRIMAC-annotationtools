@@ -15,7 +15,8 @@ import subprocess
 import os
 import pandas as pd
 
-version=os.getenv('VERSION_NUMBER')
+#version=os.getenv('VERSION_NUMBER')
+version = os.getenv('VERSION_NUMBER', '1.0') 
 
 #  to run on pallas.hi.no activate the crimac conda environment
 #  source /localscratch_hdd/tomasz/anaconda3/
