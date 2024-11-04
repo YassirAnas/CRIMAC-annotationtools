@@ -262,6 +262,12 @@ class WriteLabelsZarr:
         ds4 = ds4.chunk({"category": 1, "range": ds4.range.shape[0], "ping_time": self.pingchunk})
         compressor = Blosc(cname='zstd', clevel=3, shuffle=Blosc.BITSHUFFLE)
         encoding = {var: {"compressor": compressor} for var in ds4.data_vars}
+        
+        #--- block:added by me
+        for attr, value in ds4.attrs.items():
+            if value is None:
+                print(f"Invalid attribute {attr}: {value}")
+	    #-----------------------------------
 
         print("write start")
         if writemode==0:
